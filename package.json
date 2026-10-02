@@ -1,0 +1,74 @@
+{
+  "name": "strapi-export-import-content",
+  "version": "0.1.0",
+  "description": "Round-trip export and import of collection entries as CSV, JSON or XLSX from the Content Manager list view",
+  "keywords": ["strapi", "strapi-plugin", "export", "import", "csv", "xlsx"],
+  "license": "MIT",
+  "author": "Anrail <medius.prod@gmail.com>",
+  "repository": { "type": "git", "url": "git+https://github.com/Anrail/strapi-export-import-content.git" },
+  "bugs": { "url": "https://github.com/Anrail/strapi-export-import-content/issues" },
+  "homepage": "https://github.com/Anrail/strapi-export-import-content#readme",
+  "type": "commonjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-admin": {
+      "types": "./dist/admin/src/index.d.ts",
+      "source": "./admin/src/index.ts",
+      "import": "./dist/admin/index.mjs",
+      "require": "./dist/admin/index.js",
+      "default": "./dist/admin/index.js"
+    },
+    "./strapi-server": {
+      "types": "./dist/server/src/index.d.ts",
+      "source": "./server/src/index.ts",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    }
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "strapi-plugin build",
+    "watch": "strapi-plugin watch",
+    "verify": "strapi-plugin verify",
+    "prepublishOnly": "pnpm build && pnpm verify",
+    "test": "vitest run",
+    "test:ts:front": "tsc -p admin/tsconfig.json",
+    "test:ts:back": "tsc -p server/tsconfig.json"
+  },
+  "dependencies": {
+    "@strapi/design-system": "^2.0.0",
+    "@strapi/icons": "^2.0.0",
+    "exceljs": "^4.4.0",
+    "papaparse": "^5.5.0"
+  },
+  "devDependencies": {
+    "@strapi/sdk-plugin": "^6.1.1",
+    "@strapi/strapi": "^5.48.0",
+    "@strapi/typescript-utils": "^5.48.0",
+    "@types/papaparse": "^5.3.15",
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7",
+    "prettier": "^3.9.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.30.6",
+    "styled-components": "^6.5.3",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.9"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^5.0.0",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-router-dom": "^6.0.0",
+    "styled-components": "^6.0.0"
+  },
+  "engines": { "node": ">=20 <=24" },
+  "strapi": {
+    "kind": "plugin",
+    "name": "export-import-content",
+    "displayName": "Export Import Content",
+    "description": "Round-trip export and import of collection entries as CSV, JSON or XLSX"
+  }
+}

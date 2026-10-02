@@ -1,0 +1,7 @@
+# pnpm 11: allow install scripts for the native dev-dependencies (pnpm 10+ blocks them by
+# default). Dev-only — the published package itself has NO native deps.
+allowBuilds:
+  '@swc/core': true
+  core-js-pure: true
+  esbuild: true
+  sharp: true
